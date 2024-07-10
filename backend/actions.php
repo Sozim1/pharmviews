@@ -10,32 +10,20 @@ $action = $_POST['action'] ?? '';
 //error_log("Action: $action");
 
 if ($action == 'add') {
-    $acao = $_POST['acao'] ?? '';
-    $data = $_POST['data'] ?? '';
-    $investimento = $_POST['investimento'] ?? 0;
-    error_log("Add Action: $acao, $data, $investimento");
+    $codigo_acao = $_POST['codigo_acao'];
+    $data_prevista = $_POST['data'];
+    $investimento = $_POST['investimento'];
+    $data_cadastro = date('Y-m-d');
 
-    try {
-        $connection = connect();
-        $stmt = $connection->prepare("INSERT INTO acoes (acao, data, investimento) VALUES (?, ?, ?)");
-        if (!$stmt) {
-            throw new Exception("Prepare failed: " . $connection->error);
-        }
-        $stmt->bind_param("ssd", $acao, $data, $investimento);
-        if (!$stmt->execute()) {
-            throw new Exception("Execute failed: " . $stmt->error);
-        }
-        $stmt->close();
-        $connection->close();
-    } catch (Exception $e) {
-        error_log("Exception: " . $e->getMessage());
-        echo json_encode(['status' => 'error', 'message' => $e->getMessage()]);
-        http_response_code(500);
-        exit;
-    }
+    $connection = connect();
+    $stmt = $connection->prepare("INSERT INTO acao (codigo_acao, investimento, data_prevista, data_cadastro) VALUES (?, ?, ?, ?)");
+    $stmt->bind_param("isss", $codigo_acao, $investimento, $data_prevista, $data_cadastro);
+    $stmt->execute();
+    $stmt->close();
+    $connection->close();
 } elseif ($action == 'list') {
     $connection = connect();
-    $result = $connection->query("SELECT * FROM acoes");
+    $result = $connection->query("SELECT a.id, t.nome_acao AS acao, a.investimento, a.data_prevista FROM acao a JOIN tipo_acao t ON a.codigo_acao = t.codigo_acao");
     $actions = [];
     while ($row = $result->fetch_assoc()) {
         $actions[] = $row;
@@ -46,20 +34,20 @@ if ($action == 'add') {
     $id = $_POST['id'];
 
     $connection = connect();
-    $stmt = $connection->prepare("DELETE FROM acoes WHERE id = ?");
+    $stmt = $connection->prepare("DELETE FROM acao WHERE id = ?");
     $stmt->bind_param("i", $id);
     $stmt->execute();
     $stmt->close();
     $connection->close();
 } elseif ($action == 'edit') {
     $id = $_POST['id'];
-    $acao = $_POST['acao'];
-    $data = $_POST['data'];
+    $codigo_acao = $_POST['codigo_acao'];
+    $data_prevista = $_POST['data'];
     $investimento = $_POST['investimento'];
 
     $connection = connect();
-    $stmt = $connection->prepare("UPDATE acoes SET acao = ?, data = ?, investimento = ? WHERE id = ?");
-    $stmt->bind_param("ssdi", $acao, $data, $investimento, $id);
+    $stmt = $connection->prepare("UPDATE acao SET codigo_acao = ?, investimento = ?, data_prevista = ? WHERE id = ?");
+    $stmt->bind_param("issi", $codigo_acao, $investimento, $data_prevista, $id);
     $stmt->execute();
     $stmt->close();
     $connection->close();
@@ -67,7 +55,7 @@ if ($action == 'add') {
     $id = $_POST['id'];
 
     $connection = connect();
-    $stmt = $connection->prepare("SELECT * FROM acoes WHERE id = ?");
+    $stmt = $connection->prepare("SELECT a.id, a.codigo_acao, t.nome_acao AS acao, a.investimento, a.data_prevista FROM acao a JOIN tipo_acao t ON a.codigo_acao = t.codigo_acao WHERE a.id = ?");
     $stmt->bind_param("i", $id);
     $stmt->execute();
     $result = $stmt->get_result();
@@ -75,9 +63,5 @@ if ($action == 'add') {
     echo json_encode([$action]);
     $stmt->close();
     $connection->close();
-} else {
-    echo json_encode(['status' => 'error', 'message' => 'Ação não reconhecida']);
-    http_response_code(400);
-    exit;
 }
 ?>

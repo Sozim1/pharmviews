@@ -4,9 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="59f0411e-0051-4f68-adc4-56e69965dbbb" name="Changes" comment="Finalizado">
+    <list default="true" id="59f0411e-0051-4f68-adc4-56e69965dbbb" name="Changes" comment="Alterações com base no banco">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/actions.php" beforeDir="false" afterPath="$PROJECT_DIR$/backend/actions.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/config.php" beforeDir="false" afterPath="$PROJECT_DIR$/backend/tipo_acoes.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/script.js" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/script.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sql/structure.sql" beforeDir="false" afterPath="$PROJECT_DIR$/sql/structure.sql" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -113,7 +118,7 @@
       <updated>1720620062643</updated>
       <workItem from="1720620063757" duration="8151000" />
       <workItem from="1720628254681" duration="609000" />
-      <workItem from="1720628876334" duration="8141000" />
+      <workItem from="1720628876334" duration="9511000" />
     </task>
     <task id="LOCAL-00001" summary=".">
       <option name="closed" value="true" />
@@ -139,7 +144,15 @@
       <option name="project" value="LOCAL" />
       <updated>1720636473381</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Redme">
+      <option name="closed" value="true" />
+      <created>1720637172955</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1720637172955</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -148,7 +161,9 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="." />
     <MESSAGE value="Finalizado" />
-    <option name="LAST_COMMIT_MESSAGE" value="Finalizado" />
+    <MESSAGE value="Redme" />
+    <MESSAGE value="Alterações com base no banco" />
+    <option name="LAST_COMMIT_MESSAGE" value="Alterações com base no banco" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

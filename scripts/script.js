@@ -1,5 +1,6 @@
 $(document).ready(function() {
     loadActions();
+    loadTipoAcoes();
 
     $('#investimento').mask('000.000.000.000.000,00', {reverse: true});
 
@@ -11,21 +12,27 @@ $(document).ready(function() {
     $("#marketingForm").on("submit", function(event) {
         event.preventDefault();
 
-        let acao = $("#acao").val();
+        let codigo_acao = $("#codigo_acao").val();
         let data = $("#data").val();
         let investimento = $("#investimento").val();
+
+        if (!codigo_acao || !data || !investimento) {
+            alert("Por favor, preencha todos os campos antes de adicionar.");
+            return;
+        }
+
         investimento = investimento.replace(/\./g, '').replace(',', '.');
 
         let dataPrevista = new Date(data + 'T00:00:00');
         let dataAtualMais10Dias = new Date();
-        dataAtualMais10Dias.setDate(dataAtualMais10Dias.getDate() + 10);
+        dataAtualMais10Dias.setDate(dataAtualMais10Dias.getDate() + 9);
 
         if (dataPrevista < dataAtualMais10Dias) {
             alert("A data mínima é de 10 dias a partir da data de cadastro.");
             return;
         }
 
-        const postData = {acao: acao, data: data, investimento: investimento, action: editMode ? 'edit' : 'add'};
+        const postData = {codigo_acao: codigo_acao, data: data, investimento: investimento, action: editMode ? 'edit' : 'add'};
         if (editMode) {
             postData.id = editId;
         }
@@ -92,7 +99,7 @@ $(document).ready(function() {
                 actions.forEach(action => {
                     rows += `<tr>
                         <td>${action.acao}</td>
-                        <td>${formatDisplayDate(action.data)}</td>
+                        <td>${formatDisplayDate(action.data_prevista)}</td>
                         <td>R$ ${parseFloat(action.investimento).toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</td>
                         <td><button class="btn-edit" data-id="${action.id}"><i class="glyphicon glyphicon-pencil"></i></button></td>
                         <td><button class="btn-delete" data-id="${action.id}"><i class="glyphicon glyphicon-remove"></i></button></td>
@@ -102,6 +109,25 @@ $(document).ready(function() {
             },
             error: function(xhr, status, error) {
                 console.error("Erro ao carregar ações:", error);
+            }
+        });
+    }
+
+    function loadTipoAcoes() {
+        $.ajax({
+            url: 'backend/tipo_acoes.php',
+            type: 'POST',
+            data: {action: 'list'},
+            success: function(response) {
+                let tipoAcoes = JSON.parse(response);
+                let options = '<option value="">Selecione o tipo de ação...</option>';
+                tipoAcoes.forEach(tipoAcao => {
+                    options += `<option value="${tipoAcao.codigo_acao}">${tipoAcao.nome_acao}</option>`;
+                });
+                $("#codigo_acao").html(options);
+            },
+            error: function(xhr, status, error) {
+                console.error("Erro ao carregar tipo de ações:", error);
             }
         });
     }
@@ -133,8 +159,8 @@ $(document).ready(function() {
             success: function(response) {
                 const action = JSON.parse(response);
                 if (action && action.length > 0) {
-                    $("#acao").val(action[0].acao);
-                    $("#data").val(action[0].data);
+                    $("#codigo_acao").val(action[0].codigo_acao);
+                    $("#data").val(action[0].data_prevista);
                     $("#investimento").val(parseFloat(action[0].investimento).toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 }).replace(/\./g, '').replace(',', '.'));
                 }
             },
