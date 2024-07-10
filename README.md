@@ -28,7 +28,7 @@ Desenvolver uma página web com base no protótipo fornecido.
 
 1. Clone o repositório.
 2. Importe o banco de dados a partir do arquivo `sql/structure.sql`.
-3. Configure as credenciais do banco de dados em `backend/config.php`.
+3. Configure as credenciais do banco de dados em `backend/connect.php`.
 4. Inicie um servidor local e acesse `index.html` pelo navegador.
 
 ## Funcionalidades
