@@ -38,4 +38,11 @@ Desenvolver uma página web com base no protótipo fornecido.
 - Edição de ações
 - Exclusão de ações
 
+## Contribuição
+
+- Fique a vontade em fazer parte do projeto e adicionar novas funcionalidade, caso de duvidas ou sugestões pode me mandar uma mensagem no linkdlin ou por e-mail
+
+<div align="center">
+  <img src="https://media.giphy.com/media/AWqRqyyLYhZxS/giphy.gif" align="center" width="305.5" height="208.5">
+</div>
 
