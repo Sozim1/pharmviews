@@ -1,0 +1,110 @@
+body {
+    background-color: #e3e2e2;
+}
+
+h2 {
+    margin-bottom: 20px;
+}
+
+.navbar-brand img {
+    height: 80px;
+    margin-top: -30px;
+}
+.container-fluid {
+    background-color: #44638c !important;
+    padding: 15px 0;
+}
+
+.head2{
+    width: 100%;
+    padding: 15px;
+
+}
+
+.footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background-color: #44638c !important;
+    text-align: center;
+    padding: 10px 15px;
+}
+
+.container {
+    background-color: #ffffff;
+}
+
+.table thead th {
+    background-color: #f7f7f7;
+}
+
+.btn-block {
+    width: 100%;
+}
+
+.form-inline {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.form-group {
+    margin-bottom: 15px;
+    text-align: left;
+    flex: 1;
+}
+
+.input-group-addon {
+    width: 40px;
+}
+
+#acoesTable th,
+#acoesTable td {
+    text-align: center;
+    vertical-align: middle;
+}
+
+#marketingForm {
+    margin-bottom: 20px;
+    width: 100%;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+input.form-control, select.form-control {
+    width: 100%;
+}
+.table-striped tbody tr:nth-of-type(odd) {
+    background-color: #f9f9f9;
+}
+.table-striped tbody tr:nth-of-type(even) {
+    background-color: #ffffff;
+}
+
+button[type="submit"],
+button[type="button"] {
+    width: auto;
+    margin-left: 10px;
+    padding: 5px 20px;
+    font-size: 16px;
+}
+.sortable .glyphicon {
+    margin-left: 5px;
+
+}
+.btn-delete{
+    color: red;
+}
+.btn-edit{
+    color: blue;
+}
+
+.btn-edit, .btn-delete {
+    background: none;
+    border: none;
+}

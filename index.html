@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestão de Verbas - Pharmaviews</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="styles/style.css">
+</head>
+<body>
+<nav class="navbar navbar-default navbar-static-top">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+            </button>
+            <a class="navbar-brand" href="#">
+                <img alt="PharmaViews" src="styles/logo2.png">
+            </a>
+        </div>
+<!--        <div class="collapse navbar-collapse" id="navbar-collapse">-->
+<!--            <ul class="nav navbar-nav">-->
+<!--                <li class="active"><a href="#">Gestão de Verbas</a></li>-->
+<!--            </ul>-->
+<!--        </div>-->
+    </div>
+</nav>
+
+<div class="container">
+    <div class="head2"> <h2>Gestão de Verbas</h2></div>
+    <form id="marketingForm" class="form-inline text-center">
+        <div class="form-group">
+            <label for="acao">Ação</label>
+            <select class="form-control" id="acao" name="acao" style="width: 100%;">
+                <option value="">Selecione o tipo de ação...</option>
+                <option value="Palestra">Palestra</option>
+                <option value="Evento">Evento</option>
+                <option value="Apoio Gráfico">Apoio Gráfico</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="data">Data prevista</label>
+            <input type="date" class="form-control" id="data" name="data" style="width: 100%;" placeholder="dd/mm/aaaa">
+        </div>
+        <div class="form-group">
+            <label for="investimento">Investimento previsto</label>
+            <div class="input-group">
+                <span class="input-group-addon">R$</span>
+                <input type="text" class="form-control" id="investimento" name="investimento" placeholder="0,00">
+            </div>
+        </div>
+        <div class="form-group">
+            <label>&nbsp;</label>
+            <div>
+                <button type="button" class="btn btn-warning" id="limpar"><span class="glyphicon glyphicon-pencil"></span> Limpar</button>
+                <button type="submit" class="btn btn-success"><span class="glyphicon glyphicon-plus"></span> Adicionar</button>
+            </div>
+        </div>
+    </form>
+    <hr>
+    <h3>Ações Cadastradas</h3>
+    <table class="table table-striped table-bordered" id="acoesTable">
+        <thead>
+        <tr>
+            <th class="sortable" data-sort="acao">Ação <span class="glyphicon glyphicon-sort"></span></th>
+            <th class="sortable" data-sort="data">Data Prevista <span class="glyphicon glyphicon-sort"></span></th>
+            <th class="sortable" data-sort="investimento">Investimento Previsto <span class="glyphicon glyphicon-sort"></span></th>
+            <th>Editar</th>
+            <th>Excluir</th>
+        </tr>
+        </thead>
+        <tbody>
+        <!-- Ações serão carregadas aqui -->
+        </tbody>
+    </table>
+</div>
+<footer class="footer">
+        <p class="text-muted" style="color: #f7f7f7; text-align: left; margin-left: 50px;">© 2024 PHARMAVIEWS. Todos os direitos reservados.</p>
+</footer>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.inputmask/5.0.7-beta.19/jquery.inputmask.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<script src="scripts/script.js"></script>
+</body>
+</html>
