@@ -17,13 +17,13 @@ Desenvolver uma página web com base no protótipo fornecido.
 ## Frameworks e Bibliotecas Utilizadas
 - Bootstrap: Bootstrap 3.4
 - DataTables: DataTables
-- 
+ 
 ## Campos
 
 - Ação: Combo de opções para selecionar o tipo de ação, conforme cadastrado no banco de dados.
 - Data prevista: Definição da data (dia, mês e ano) prevista para ocorrer a ação de marketing. A data mínima é de 10 dias a partir da data de cadastro.
 - Investimento previsto: Valor em reais previsto para a ação.
-- 
+ 
 ## Instruções de Execução
 
 1. Clone o repositório.
